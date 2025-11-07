@@ -1,17 +1,58 @@
+using DotNetEnv;
+using System.Text;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using ClientsService.src.Data;
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+Env.Load();
+
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+var connectionString = builder.Configuration.GetConnectionString("Postgres");
+
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+    options.UseNpgsql(connectionString));
+
+
+builder.Services.AddHttpContextAccessor(); 
+
+
+// Add CORS if needed
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ApplicationDBContext>();
+}
 
+
+app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 
 app.Run();
