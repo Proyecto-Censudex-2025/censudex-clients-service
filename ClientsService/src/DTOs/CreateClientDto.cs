@@ -3,18 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClientsService.src.Model
+namespace ClientsService.src.DTOs
 {
-    public class Client
+    public class CreateClientDto
     {
-        /// <summary>
-        /// Client's Id
-        /// </summary>
-        public required string Id { get; set; }
-        /// <summary>
-        /// Client's role
-        /// </summary>
-        public required string Role { get; set; }
         /// <summary>
         /// Client's name
         /// </summary>
@@ -32,33 +24,20 @@ namespace ClientsService.src.Model
         /// </summary>
         public required string Username { get; set; }
         /// <summary>
-        /// Client's birthdate
+        /// Client's date of birth
         /// </summary>
-        public DateOnly Birthdate { get; set; }
+        public required DateOnly Birthdate { get; set; }
         /// <summary>
-        /// Client's birth date
+        /// Client's address
         /// </summary>
         public required string Address { get; set; }
         /// <summary>
-        /// Client's password
+        /// Client's telephone number
         /// </summary>
         public required string TelephoneNumber { get; set; }
         /// <summary>
         /// Client's password
         /// </summary>
         public required string Password { get; set; }
-        /// <summary>
-        /// Client's registration date
-        /// </summary>
-        public DateOnly RegistrationDate { get; set; }
-        /// <summary>
-        /// Client's state
-        /// </summary>
-        public bool isActive { get; set; }
-        /// <summary>
-        /// Client's dates of deactivation
-        /// </summary>
-        public List<DateOnly> DeactivationDates { get; set; } = new List<DateOnly>();
-        
     }
 }

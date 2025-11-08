@@ -33,10 +33,11 @@ namespace ClientsService.src.Data
                         Surename = "Apellido_Admin",
                         Email = "Admin@censudex.cl",
                         Username = "AdminUsername",
-                        BirthDate = DateOnly.FromDateTime(DateTime.Today).AddYears(-18),
+                        Birthdate = DateOnly.FromDateTime(DateTime.Today).AddYears(-18),
                         Address = "A very real address 123",
                         TelephoneNumber = "+56911111111",
                         Password = PasswordManager.HashPassword("Password123+"),
+                        RegistrationDate = DateOnly.FromDateTime(DateTime.Now),
                         isActive = true
                     };
                     context.clients.Add(admin);
@@ -60,15 +61,16 @@ namespace ClientsService.src.Data
                         var client = new Client
                         {
                             Id = Guid.NewGuid().ToString(),
-                            Role = "Client",
+                            Role = "User",
                             Name = names[random.Next(0, 6)],
                             Surename = surenames[random.Next(0, 6)],
                             Email = GenerateCryptoRandomString(random.Next(1, 17)) + "@censudex.cl",
                             Username = usernames[random.Next(0, 20)],
-                            BirthDate = DateOnly.FromDateTime(DateTime.Today).AddYears(-18),
+                            Birthdate = DateOnly.FromDateTime(DateTime.Today).AddYears(-18),
                             Address = "A very real address 123",
                             TelephoneNumber = "+569" + number,
                             Password = PasswordManager.HashPassword(GeneratePassword(12)),
+                            RegistrationDate = DateOnly.FromDateTime(DateTime.Now),
                             isActive = true
                         };
                         context.clients.Add(client);
