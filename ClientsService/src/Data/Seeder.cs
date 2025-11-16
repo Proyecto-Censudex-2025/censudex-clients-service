@@ -48,14 +48,7 @@ namespace ClientsService.src.Data
                     string[] surenames = ["Morgan", "Carter", "Delgado", "Blake", "Monroe", "Cruz"];
                     string[] usernames = ["PixelVoyager", "LunaNova", "EchoStorm", "CyberFenix", "ShadowPulse",
                      "CrimsonByte", "NeonSpecter", "AquaRift", "ZeroComet", "DataNomad", "SkyBreaker", "MysticWarden",
-                     "NovaDrift", "QuantumPanda", "SilentOrbit", "IronNebula", "SolarBreeze", "DarkAtlas", "CrystalLogic", "EchoZen"];
-                    string digits = "0123456789";
-                    using var rng = RandomNumberGenerator.Create();
-                    var number =  new char[8];
-                    for (int i = 0; i < 8; i++)
-                    {
-                        number[i] = GetRandomCharacter(digits, rng);
-                    }       
+                     "NovaDrift", "QuantumPanda", "SilentOrbit", "IronNebula", "SolarBreeze", "DarkAtlas", "CrystalLogic", "EchoZen"];    
                     for (int i = 1; i < 10; i++)
                     {
                         var client = new Client
@@ -68,7 +61,7 @@ namespace ClientsService.src.Data
                             Username = usernames[random.Next(0, 20)],
                             Birthdate = DateOnly.FromDateTime(DateTime.Today).AddYears(-18),
                             Address = "A very real address 123",
-                            TelephoneNumber = "+569" + number,
+                            TelephoneNumber = "+56923423411",
                             Password = PasswordManager.HashPassword(GeneratePassword(12)),
                             RegistrationDate = DateOnly.FromDateTime(DateTime.Now),
                             isActive = true

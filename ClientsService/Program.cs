@@ -16,11 +16,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel(options =>
 {
-    // HTTP/2 endpoint for gRPC
-    options.ListenLocalhost(5253, o => o.Protocols = HttpProtocols.Http2);
+    // Configurar HTTP/2 como protocolo por defecto
+    options.ConfigureEndpointDefaults(listenOptions =>
+    {
+        listenOptions.Protocols = HttpProtocols.Http2;
+    });
     
-    // Optional: HTTP/1.1 endpoint for REST API (login)
+    // Puerto específico para HTTP/1.1 (REST API/login)
     options.ListenLocalhost(5254, o => o.Protocols = HttpProtocols.Http1);
+    
+    // Puerto para gRPC - usará HTTP/2 por defecto
+    options.ListenLocalhost(50053);
 });
 
 Env.Load();
