@@ -54,7 +54,7 @@ flowchart TD
 
 ## Modelo de Datos
 
-### Entidad User
+### Entidad Client
 ```
 Tabla: clients
 ├── Id (string, PK)
@@ -77,7 +77,7 @@ Clave Primaria: Id
 Únicos: Email, Username
 Recomendados: isActive, Role para optimización de consultas
 
-### Estados de un Usuario:
+### Estados de un Cliente:
 
 - **Activo:** Usuario esta activo.
 - **Inactivo:** Estación se encuentra inactiva.
