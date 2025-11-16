@@ -1,6 +1,6 @@
 # censudex-clients-service
 
-Servicio que permite la gestión de toda la información de los de los clientes de censudex
+Servicio que permite la gestión de toda la información de los clientes de censudex
 
 ## Tecnologías utilizadas
 
