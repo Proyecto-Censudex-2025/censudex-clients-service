@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using ClientsService.Protos;
+using ClientsService.Grcp;
 using ClientsService.src.DTOs;
 using ClientsService.src.Helper;
 using ClientsService.src.Interface;
