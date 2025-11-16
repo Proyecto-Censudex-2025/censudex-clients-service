@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "ClientsService.Protos";
+option csharp_namespace = "ClientsService.Grcp";
 
 package client;
 
